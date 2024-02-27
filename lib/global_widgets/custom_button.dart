@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
 
@@ -25,7 +27,7 @@ class CustomButton extends StatelessWidget {
                   ? Border.all(
                       color: ColorConstant.primaryBlack.withOpacity(0.4))
                   : null,
-              color: ColorConstant.primaryBlue,
+              color: buttonColor,
               borderRadius: BorderRadius.circular(5)),
           child: Text(
             text,

@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
-import 'package:instagram_clone_application/core/constants/images/image_constant.dart';
+import 'package:instagram_clone_application/core/constants/image_constant.dart';
 import 'package:instagram_clone_application/global_widgets/custom_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -51,8 +53,8 @@ class LoginScreen extends StatelessWidget {
               ),
               TextButton(
                   onPressed: () {},
-                  child: Container(
-                    width: double.infinity,
+                  child: Align(
+                    alignment: Alignment.centerRight,
                     child: Text(
                       "Forgot Password?",
                       textAlign: TextAlign.end,
@@ -65,11 +67,59 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: "Log In",
                 buttonColor: ColorConstant.primaryBlue.withOpacity(0.4),
-              )
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(ImageConstant.facebookLogoPng),
+                  SizedBox(width: 10),
+                  Text(
+                    "Log in with Facebook",
+                    style: TextStyle(
+                        color: ColorConstant.primaryBlue,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Text(
+                "OR",
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: ColorConstant.primaryBlack.withOpacity(0.4)),
+              ),
+              SizedBox(height: 30),
+              RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                      text: "Don't have an account? ",
+                      style: TextStyle(
+                          color: ColorConstant.primaryBlack.withOpacity(0.4)),
+                      children: [
+                        TextSpan(
+                            text: "Sign up",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorConstant.primaryBlue))
+                      ]))
             ],
           ),
         ),
       ),
+      bottomNavigationBar: Container(
+          padding: EdgeInsets.symmetric(vertical: 15),
+          decoration:
+              BoxDecoration(border: Border(top: BorderSide(width: 0.1))),
+          child: Text(
+            "Instagram or Facebook",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 12,
+                color: ColorConstant.primaryBlack.withOpacity(0.4)),
+          )),
     );
   }
 }

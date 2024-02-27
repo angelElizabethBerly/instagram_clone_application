@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
-import 'package:instagram_clone_application/core/constants/images/image_constant.dart';
+import 'package:instagram_clone_application/core/constants/image_constant.dart';
 import 'package:instagram_clone_application/global_widgets/custom_button.dart';
 import 'package:instagram_clone_application/view/login_screen/login_screen.dart';
 

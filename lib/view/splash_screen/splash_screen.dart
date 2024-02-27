@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone_application/core/constants/images/image_constant.dart';
+import 'package:instagram_clone_application/core/constants/image_constant.dart';
 import 'package:instagram_clone_application/view/select_account_screen/select_account_screen.dart';
 
 class SplashScreen extends StatefulWidget {
