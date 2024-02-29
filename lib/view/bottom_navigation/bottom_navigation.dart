@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/view/home_screen/home_screen.dart';
+import 'package:instagram_clone_application/view/select_account_screen/select_account_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -25,8 +26,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
       body: screenList[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           onTap: (value) {
-            selectedIndex = value;
-            setState(() {});
+            if (value != 2) {
+              selectedIndex = value;
+              setState(() {});
+            } else {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SelectAccountScreen()));
+            }
           },
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
