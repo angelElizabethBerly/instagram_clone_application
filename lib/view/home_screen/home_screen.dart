@@ -45,8 +45,19 @@ class HomeScreen extends StatelessWidget {
           ),
           Divider(height: 1),
           Column(
-              children: List.generate(DummyDB.postData.length,
-                  (index) => CustomPostCard(postIndex: index)))
+              children: List.generate(
+                  DummyDB.postData.length,
+                  (index) => CustomPostCard(
+                      userName: DummyDB.postData[index]["userName"],
+                      proPic: DummyDB.postData[index]["pro_pic"],
+                      place: DummyDB.postData[index]["place"],
+                      isOfficial: DummyDB.postData[index]["isOfficial"],
+                      isLiked: DummyDB.postData[index]["liked"],
+                      date: DummyDB.postData[index]["date"],
+                      description: DummyDB.postData[index]["description"],
+                      likedCount: DummyDB.postData[index]["likedCount"],
+                      likedName: DummyDB.postData[index]["likedName"],
+                      post: DummyDB.postData[index]["post"])))
         ]),
       ),
     );

@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:instagram_clone_application/core/constants/color_constant.dart';
 import 'package:instagram_clone_application/view/home_screen/home_screen.dart';
+import 'package:instagram_clone_application/view/search_screen/search_screen.dart';
 import 'package:instagram_clone_application/view/select_account_screen/select_account_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -14,7 +16,7 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   List screenList = [
     HomeScreen(),
-    Container(color: Colors.black),
+    SearchScreen(),
     Container(color: Colors.white),
     Container(color: Colors.blue),
     Container(color: Colors.blueGrey)
@@ -56,7 +58,22 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 activeIcon: Icon(Icons.favorite_outlined, size: 30),
                 icon: Icon(Icons.favorite_border, size: 30),
                 label: ""),
-            BottomNavigationBarItem(icon: CircleAvatar(radius: 15), label: "")
+            BottomNavigationBarItem(
+                activeIcon: CircleAvatar(
+                  radius: 18,
+                  backgroundColor: ColorConstant.primaryBlack,
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundImage: NetworkImage(
+                        "https://images.pexels.com/photos/1615776/pexels-photo-1615776.jpeg?auto=compress&cs=tinysrgb&w=600"),
+                  ),
+                ),
+                icon: CircleAvatar(
+                  radius: 15,
+                  backgroundImage: NetworkImage(
+                      "https://images.pexels.com/photos/1615776/pexels-photo-1615776.jpeg?auto=compress&cs=tinysrgb&w=600"),
+                ),
+                label: "")
           ],
           currentIndex: selectedIndex),
     );
