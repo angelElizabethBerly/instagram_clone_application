@@ -47,6 +47,8 @@ class DummyDB {
       "place": "Tokyo, Japan",
       "post":
           "https://images.pexels.com/photos/15577341/pexels-photo-15577341/free-photo-of-lesser-kestrel-perching-on-a-twig.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "post_2":
+          "https://images.pexels.com/photos/15850843/pexels-photo-15850843/free-photo-of-close-up-of-a-black-headed-gull.jpeg?auto=compress&cs=tinysrgb&w=600",
       "likedName": "craig_love",
       "likedCount": "44,686",
       "description":
@@ -78,5 +80,11 @@ class DummyDB {
       "description":
           "Lost in the hustle and bustle of Shibuya Crossing. Here are some moments captured amidst the chaos."
     }
+  ];
+
+  static List<String> postImageList = [
+    "https://images.pexels.com/photos/15577341/pexels-photo-15577341/free-photo-of-lesser-kestrel-perching-on-a-twig.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/15850843/pexels-photo-15850843/free-photo-of-close-up-of-a-black-headed-gull.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/15577341/pexels-photo-15577341/free-photo-of-lesser-kestrel-perching-on-a-twig.jpeg?auto=compress&cs=tinysrgb&w=600",
   ];
 }
