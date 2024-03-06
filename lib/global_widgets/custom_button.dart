@@ -9,8 +9,12 @@ class CustomButton extends StatelessWidget {
       required this.text,
       this.buttonColor = ColorConstant.primaryBlue,
       this.haveBorder = false,
-      this.onTap});
+      this.onTap,
+      this.textColor = ColorConstant.primaryWhite,
+      this.verticalPadding = 10});
   final String text;
+  final Color textColor;
+  final double verticalPadding;
   final Color buttonColor;
   final bool haveBorder;
   final void Function()? onTap;
@@ -21,7 +25,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: verticalPadding),
           decoration: BoxDecoration(
               border: haveBorder == true
                   ? Border.all(
@@ -33,9 +37,7 @@ class CustomButton extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: ColorConstant.primaryWhite,
-                fontSize: 14,
-                fontWeight: FontWeight.w500),
+                color: textColor, fontSize: 14, fontWeight: FontWeight.w500),
           )),
     );
   }
