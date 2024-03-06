@@ -27,6 +27,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
+                            margin: EdgeInsets.all(1),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -35,6 +36,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                             height: MediaQuery.sizeOf(context).width * 0.33,
                           ),
                           Container(
+                            margin: EdgeInsets.all(1),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -48,6 +50,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                     Expanded(
                         flex: 2,
                         child: Container(
+                            margin: EdgeInsets.all(1),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -61,6 +64,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                     Expanded(
                         flex: 2,
                         child: Container(
+                            margin: EdgeInsets.all(1),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -72,6 +76,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
+                            margin: EdgeInsets.all(1),
                             height: MediaQuery.sizeOf(context).width * 0.33,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -80,6 +85,7 @@ class CustomSearchResultGrid extends StatelessWidget {
                                         "https://images.pexels.com/photos/19367230/pexels-photo-19367230/free-photo-of-stone-bridge-in-a-forest.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"))),
                           ),
                           Container(
+                            margin: EdgeInsets.all(1),
                             height: MediaQuery.sizeOf(context).width * 0.33,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -99,6 +105,7 @@ class CustomSearchResultGrid extends StatelessWidget {
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemBuilder: (context, index) => Container(
+              margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
