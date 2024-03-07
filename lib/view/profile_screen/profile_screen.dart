@@ -5,8 +5,15 @@ import 'package:instagram_clone_application/core/constants/color_constant.dart';
 import 'package:instagram_clone_application/global_widgets/custom_button.dart';
 import 'package:instagram_clone_application/view/profile_screen/widget/custom_profile_data.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int currentTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -122,14 +129,14 @@ class ProfileScreen extends StatelessWidget {
                                     Column(
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.all(5),
+                                          padding: EdgeInsets.all(3),
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               border: Border.all(
                                                   color: ColorConstant
                                                       .primaryBlack)),
                                           child: CircleAvatar(
-                                            radius: 24,
+                                            radius: 27,
                                             backgroundImage: NetworkImage(
                                                 "https://images.pexels.com/photos/10031899/pexels-photo-10031899.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
                                           ),
@@ -147,28 +154,29 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               Divider(height: 15),
-              Container(
-                child: TabBar(
-                    indicatorWeight: 1,
-                    dividerHeight: 0,
-                    indicatorColor: ColorConstant.primaryBlack,
-                    labelColor: ColorConstant.primaryBlack,
-                    unselectedLabelColor:
-                        ColorConstant.primaryBlack.withOpacity(.3),
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    tabs: [
-                      Tab(
-                        icon: Icon(Icons.grid_on_sharp),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.person_pin_rounded),
-                      )
-                    ]),
-              ),
-              Container(
-                height: MediaQuery.sizeOf(context).height,
-                child: TabBarView(children: [
-                  GridView.builder(
+              TabBar(
+                  onTap: (value) {
+                    setState(() {
+                      currentTabIndex = value;
+                    });
+                  },
+                  indicatorWeight: 1,
+                  dividerHeight: 0,
+                  indicatorColor: ColorConstant.primaryBlack,
+                  labelColor: ColorConstant.primaryBlack,
+                  unselectedLabelColor:
+                      ColorConstant.primaryBlack.withOpacity(.3),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  tabs: [
+                    Tab(
+                      icon: Icon(Icons.grid_on_sharp),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.person_pin_rounded),
+                    )
+                  ]),
+              currentTabIndex == 0
+                  ? GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -180,8 +188,8 @@ class ProfileScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   image: NetworkImage(index.isEven
                                       ? "https://images.pexels.com/photos/20115405/pexels-photo-20115405/free-photo-of-a-rose-bush-in-front-of-a-house-with-columns.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                                      : "https://images.pexels.com/photos/20447460/pexels-photo-20447460/free-photo-of-palm-trees-paradise.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"))))),
-                  GridView.builder(
+                                      : "https://images.pexels.com/photos/20447460/pexels-photo-20447460/free-photo-of-palm-trees-paradise.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")))))
+                  : GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -195,8 +203,6 @@ class ProfileScreen extends StatelessWidget {
                                         ? "https://images.pexels.com/photos/20432992/pexels-photo-20432992/free-photo-of-funchal-at-madeira.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
                                         : "https://images.pexels.com/photos/20424751/pexels-photo-20424751/free-photo-of-two-women-are-sitting-on-the-grass-taking-pictures.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"))),
                           ))
-                ]),
-              )
             ],
           ),
         ),
