@@ -1,19 +1,18 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
+import 'package:instagram_clone_application/dummy_db/dummy_db.dart';
 import 'package:instagram_clone_application/global_widgets/custom_button.dart';
 import 'package:instagram_clone_application/view/profile_screen/widget/custom_profile_data.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class Profilescreen extends StatefulWidget {
+  const Profilescreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<Profilescreen> createState() => _ProfilescreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  int currentTabIndex = 0;
+class _ProfilescreenState extends State<Profilescreen> {
+  var currentTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,144 +21,169 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Row(mainAxisSize: MainAxisSize.min, children: [
-            Icon(Icons.lock_sharp, size: 15),
-            SizedBox(width: 5),
-            Text("jacob_w",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-            Icon(Icons.keyboard_arrow_down)
-          ]),
+          title: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.lock),
+              Text("jacob_j"),
+              Icon(Icons.keyboard_arrow_down_rounded),
+            ],
+          ),
           actions: [
             IconButton(
-              icon: Icon(Icons.menu, size: 30),
               onPressed: () {},
+              icon: Icon(Icons.menu),
             )
           ],
         ),
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Container(
+                padding: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border:
-                              Border.all(color: ColorConstant.primaryBlack)),
-                      child: CircleAvatar(
-                        radius: 43,
-                        backgroundImage: NetworkImage(
-                            "https://images.pexels.com/photos/10031899/pexels-photo-10031899.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
-                      ),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 48,
+                          backgroundColor:
+                              ColorConstant.primaryBlack.withOpacity(.1),
+                          child: CircleAvatar(
+                              radius: 46,
+                              backgroundColor: ColorConstant.primaryWhite,
+                              child: CircleAvatar(
+                                radius: 43,
+                                backgroundColor: ColorConstant.primaryBlack,
+                                backgroundImage: NetworkImage(
+                                    "https://images.pexels.com/photos/10031899/pexels-photo-10031899.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"),
+                              )),
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              CustomProfileDataWidget(
+                                  title: "Posts", value: 90),
+                              CustomProfileDataWidget(
+                                  title: "Followers", value: 767),
+                              CustomProfileDataWidget(
+                                  title: "Following", value: 7667),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    CustomProfileDataWidget(value: 54, title: "Posts"),
-                    CustomProfileDataWidget(value: 834, title: "Followers"),
-                    CustomProfileDataWidget(value: 162, title: "Following")
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      "lksdhjagsi",
+                      style: TextStyle(
+                          color: ColorConstant.primaryBlack,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Lorem Ipsum is simpl dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                      maxLines: 3,
+                      textAlign: TextAlign.justify,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    CustomButton(
+                      text: "Edit Profile",
+                      haveBorder: true,
+                      verticalPadding: 5,
+                      buttonColor: ColorConstant.transparent,
+                      textColor: ColorConstant.primaryBlack,
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 32,
+                                backgroundColor:
+                                    ColorConstant.primaryBlack.withOpacity(.1),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundColor: ColorConstant.primaryWhite,
+                                  child: Icon(Icons.add),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 3,
+                              ),
+                              Text(
+                                "Add",
+                                style: TextStyle(
+                                    color: ColorConstant.primaryBlack,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: List.generate(
+                              10,
+                              (index) => Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 32,
+                                      backgroundColor: ColorConstant
+                                          .primaryBlack
+                                          .withOpacity(.1),
+                                      child: CircleAvatar(
+                                          radius: 30,
+                                          backgroundColor:
+                                              ColorConstant.primaryWhite,
+                                          child: CircleAvatar(
+                                            radius: 28,
+                                            backgroundColor:
+                                                ColorConstant.primaryBlack,
+                                            backgroundImage: NetworkImage(
+                                                "https://images.pexels.com/photos/10031899/pexels-photo-10031899.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"),
+                                          )),
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Text(
+                                      "title",
+                                      style: TextStyle(
+                                          color: ColorConstant.primaryBlack,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  "Jacob West",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                ),
+              Divider(
+                height: 0,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: RichText(
-                  text: TextSpan(
-                      text: "Digital goodies designer ",
-                      style: TextStyle(
-                          color: ColorConstant.primaryBlack, fontSize: 12),
-                      children: [
-                        TextSpan(
-                            text: "@pixellz",
-                            style: TextStyle(color: ColorConstant.primaryBlue)),
-                        TextSpan(text: "\nEverything is designed")
-                      ]),
-                ),
-              ),
-              SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: CustomButton(
-                    verticalPadding: 5,
-                    text: "Edit Profile",
-                    textColor: ColorConstant.primaryBlack,
-                    buttonColor: ColorConstant.primaryWhite,
-                    haveBorder: true),
-              ),
-              SizedBox(height: 16),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: 62,
-                            width: 62,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  color: ColorConstant.primaryBlack
-                                      .withOpacity(0.5)),
-                            ),
-                            child: Icon(Icons.add, size: 25),
-                          ),
-                          SizedBox(height: 5),
-                          Text("New", style: TextStyle(fontSize: 12))
-                        ],
-                      ),
-                      Row(
-                        children: List.generate(
-                            10,
-                            (index) => Row(
-                                  children: [
-                                    SizedBox(width: 18),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(3),
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  color: ColorConstant
-                                                      .primaryBlack)),
-                                          child: CircleAvatar(
-                                            radius: 27,
-                                            backgroundImage: NetworkImage(
-                                                "https://images.pexels.com/photos/10031899/pexels-photo-10031899.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"),
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text("Friends",
-                                            style: TextStyle(fontSize: 12))
-                                      ],
-                                    ),
-                                  ],
-                                )),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Divider(height: 15),
               TabBar(
-                  onTap: (value) {
-                    setState(() {
-                      currentTabIndex = value;
-                    });
-                  },
                   indicatorWeight: 1,
                   dividerHeight: 0,
                   indicatorColor: ColorConstant.primaryBlack,
@@ -167,6 +191,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   unselectedLabelColor:
                       ColorConstant.primaryBlack.withOpacity(.3),
                   indicatorSize: TabBarIndicatorSize.tab,
+                  onTap: (index) {
+                    setState(() {
+                      currentTabIndex = index;
+                    });
+                  },
                   tabs: [
                     Tab(
                       icon: Icon(Icons.grid_on_sharp),
@@ -179,30 +208,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ? GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
+                      itemCount: DummyDB.postsList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 2,
+                          crossAxisSpacing: 2,
                           crossAxisCount: 3),
                       itemBuilder: (context, index) => Container(
-                          margin: EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(index.isEven
-                                      ? "https://images.pexels.com/photos/20115405/pexels-photo-20115405/free-photo-of-a-rose-bush-in-front-of-a-house-with-columns.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                                      : "https://images.pexels.com/photos/20447460/pexels-photo-20447460/free-photo-of-palm-trees-paradise.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")))))
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(DummyDB.postsList[index]))),
+                      ),
+                    )
                   : GridView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
+                      itemCount: DummyDB.taggedPostsList.length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 2,
+                          crossAxisSpacing: 2,
                           crossAxisCount: 3),
                       itemBuilder: (context, index) => Container(
-                            margin: EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(index.isEven
-                                        ? "https://images.pexels.com/photos/20432992/pexels-photo-20432992/free-photo-of-funchal-at-madeira.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                                        : "https://images.pexels.com/photos/20424751/pexels-photo-20424751/free-photo-of-two-women-are-sitting-on-the-grass-taking-pictures.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"))),
-                          ))
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    DummyDB.taggedPostsList[index]))),
+                      ),
+                    )
             ],
           ),
         ),

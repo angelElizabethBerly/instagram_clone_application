@@ -20,7 +20,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     SearchScreen(),
     Container(color: Colors.white),
     Container(color: Colors.blue),
-    ProfileScreen()
+    Profilescreen()
   ];
   int selectedIndex = 0;
   @override

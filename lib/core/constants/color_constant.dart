@@ -8,4 +8,5 @@ class ColorConstant {
   static const Color storyGradient1 = Color(0xffFBAA47);
   static const Color storyGradient2 = Color(0xffD91A46);
   static const Color storyGradient3 = Color(0xffA60F93);
+  static const Color transparent = Colors.transparent;
 }

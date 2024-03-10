@@ -1,7 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
+import 'package:instagram_clone_application/view/create_post_screen/tabs/library_tab.dart';
+import 'package:instagram_clone_application/view/create_post_screen/tabs/photos_tab.dart';
 
 class CreatePostScreen extends StatefulWidget {
   const CreatePostScreen({super.key});
@@ -17,10 +17,15 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          leadingWidth: 80,
           leading: TextButton(
             child: Text(
-              "Cancel",
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+              "cancel",
+              style: TextStyle(
+                color: ColorConstant.primaryBlack,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -29,87 +34,120 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           title: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Recents",
-                style: TextStyle(fontSize: 18),
-              ),
+              Text("Recents"),
+              SizedBox(width: 10),
               Icon(Icons.keyboard_arrow_down_outlined)
             ],
           ),
+          titleTextStyle: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: ColorConstant.primaryBlack),
           centerTitle: true,
           actions: [
             TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Next",
-                  style: TextStyle(color: ColorConstant.primaryBlue),
-                ))
+              child: Text(
+                "Next",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: ColorConstant.primaryBlue),
+              ),
+              onPressed: () {},
+            ),
           ],
         ),
         body: Column(
           children: [
             Container(
               padding: EdgeInsets.all(10),
-              height: 300,
-              width: double.infinity,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                          "https://images.pexels.com/photos/18424481/pexels-photo-18424481/free-photo-of-a-man-fishing-from-the-pier.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"))),
-              child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: ColorConstant.primaryBlack,
-                            borderRadius: BorderRadius.circular(40)),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.all_inclusive,
-                              color: ColorConstant.primaryWhite),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: ColorConstant.primaryBlack,
-                            borderRadius: BorderRadius.circular(40)),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.grid_3x3,
-                              color: ColorConstant.primaryWhite),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: ColorConstant.primaryBlack,
-                            borderRadius: BorderRadius.circular(40)),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.all_inclusive,
-                              color: ColorConstant.primaryWhite),
-                        ),
-                      )
-                    ],
-                  )),
-            )
+                          "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"))),
+              height: 375,
+              alignment: Alignment.bottomRight,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: ColorConstant.primaryBlack.withOpacity(.4),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Icon(
+                        Icons.all_inclusive,
+                        size: 25,
+                        color: ColorConstant.lightGrey,
+                      )),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: ColorConstant.primaryBlack.withOpacity(.4),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Icon(
+                        Icons.space_dashboard_outlined,
+                        size: 25,
+                        color: ColorConstant.lightGrey,
+                      )),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          color: ColorConstant.primaryBlack.withOpacity(.4),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.filter_none,
+                            size: 25,
+                            color: ColorConstant.lightGrey,
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          Text(
+                            "SELECT MULTIPPLE",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: ColorConstant.primaryWhite),
+                          ),
+                        ],
+                      )),
+                ],
+              ),
+            ),
+            Expanded(
+                child: TabBarView(children: [
+              LibraryTab(),
+              PhotosTab(),
+              LibraryTab(),
+            ]))
           ],
         ),
         bottomNavigationBar: TabBar(
-            labelColor: ColorConstant.primaryBlack,
-            unselectedLabelColor: ColorConstant.primaryBlack.withOpacity(0.5),
-            labelStyle: TextStyle(fontWeight: FontWeight.bold),
             indicatorWeight: 1,
-            indicatorSize: TabBarIndicatorSize.tab,
             dividerHeight: 0,
+            labelColor: ColorConstant.primaryBlack,
+            unselectedLabelColor: ColorConstant.primaryBlack.withOpacity(.3),
+            indicator: BoxDecoration(),
             tabs: [
-              Tab(text: "Library"),
-              Tab(text: "Photo"),
-              Tab(text: "Video"),
+              Tab(
+                text: "Library",
+              ),
+              Tab(
+                text: "Photo",
+              ),
+              Tab(
+                text: "Video",
+              ),
             ]),
       ),
     );
