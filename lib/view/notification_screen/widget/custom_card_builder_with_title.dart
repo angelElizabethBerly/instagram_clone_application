@@ -31,7 +31,7 @@ class CustomCardBuilderWithTile extends StatelessWidget {
           ),
           Column(
             children:
-                List.generate(itemCount, (index) => CustonNotificationCard()),
+                List.generate(itemCount, (index) => CustomNotificationCard()),
           )
         ],
       ),

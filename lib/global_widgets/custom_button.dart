@@ -12,7 +12,8 @@ class CustomButton extends StatelessWidget {
       this.onTap,
       this.textColor = ColorConstant.primaryWhite,
       this.verticalPadding = 10,
-      this.horizontalPadding = 0});
+      this.horizontalPadding = 0,
+      this.width});
   final String text;
   final Color textColor;
   final double verticalPadding;
@@ -20,13 +21,14 @@ class CustomButton extends StatelessWidget {
   final bool haveBorder;
   final double horizontalPadding;
   final void Function()? onTap;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-          width: double.infinity,
+          width: width,
           padding: EdgeInsets.symmetric(
               vertical: verticalPadding, horizontal: horizontalPadding),
           decoration: BoxDecoration(

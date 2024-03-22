@@ -32,6 +32,7 @@ class SelectAccountScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               CustomButton(
+                width: double.infinity,
                 text: "Log in",
                 onTap: () {},
               ),

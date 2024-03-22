@@ -3,14 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:instagram_clone_application/global_widgets/custom_button.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
 
-class CustonNotificationCard extends StatefulWidget {
-  const CustonNotificationCard({super.key});
+class CustomNotificationCard extends StatefulWidget {
+  const CustomNotificationCard({super.key});
 
   @override
-  State<CustonNotificationCard> createState() => _CustonNotificationCardState();
+  State<CustomNotificationCard> createState() => _CustomNotificationCardState();
 }
 
-class _CustonNotificationCardState extends State<CustonNotificationCard> {
+class _CustomNotificationCardState extends State<CustomNotificationCard> {
   @override
   Widget build(BuildContext context) {
     List profileImages = ["", ""];

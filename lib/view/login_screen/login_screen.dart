@@ -84,6 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
                 CustomButton(
+                  width: double.infinity,
                   onTap: () {
                     Navigator.pushAndRemoveUntil(
                         context,

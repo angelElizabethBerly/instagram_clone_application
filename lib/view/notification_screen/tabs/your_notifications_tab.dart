@@ -25,6 +25,7 @@ class _YourNotificationsTabState extends State<YourNotificationsTab> {
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 13),
               child: Text("Follow requests")),
           Column(
+            mainAxisSize: MainAxisSize.min,
             children: List.generate(
               10,
               (index) => CustomCardBuilderWithTile(

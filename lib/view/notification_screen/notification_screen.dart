@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:instagram_clone_application/core/constants/color_constant.dart';
 import 'package:instagram_clone_application/view/notification_screen/tabs/your_notifications_tab.dart';
